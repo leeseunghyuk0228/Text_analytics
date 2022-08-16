@@ -1,0 +1,13 @@
+!pip install -U textblob nltk
+import pandas as pd
+from textblob import TextBlob
+
+def con(t):
+    from langdetect import detect
+    try:
+        return detect(t)
+    except:
+        return '-'
+    
+df=pd.read_excel('/Users/halo8/Desktop/psy.xlsx')
+df['country']=df['text'].apply(con)
