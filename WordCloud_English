@@ -42,6 +42,7 @@ for word in unique_NN_words1:
 from collections import Counter
 c = Counter(final_NN_words) # input type should be a list of words (or tokens)
 
+# 빈도수 기준 상위 k개 단어 출력
 k = 20
-print(c.most_common(k)) # 빈도수 기준 상위 k개 단어 출력
+print(c.most_common(k)) 
 
