@@ -17,7 +17,7 @@ for i in df.text.dropna():
 # 명사에 해당하는 단어만 모아서 리스트에 저장하기 위해 빈 리스트를 생성합니다.
 noun_list = []
 for sentence in phrase_list:
-    # 정규표현식 함수를 통해 문장에 포함된 영문, 숫자는 제외시킵니다.
+    # 영어, 숫자, ', ", ?, !, ~ 제거
     try:
         sentence = re.sub('[a-zA-z0-9,\',\",?,!,~]','', sentence)
         # 명사(Noun)에 해당하는 단어만 noun_list에 append합니다.
