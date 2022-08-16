@@ -1,0 +1,47 @@
+import nltk
+import pickle
+from nltk.corpus import stopwords
+import re
+import pandas as pd
+#nltk.download('all')
+p=re.compile('[\"\'?!.’,:]')
+df=pd.read_excel('/Users/halo8/Desktop/영_일렉시드_1.xlsx')
+content=' '.join(df.comment)
+cleaned_content = p.sub(string=content,repl='').lower()
+word_tokens = nltk.word_tokenize(cleaned_content)
+tokens_pos = nltk.pos_tag(word_tokens)
+NN_words = []
+
+for word, pos in tokens_pos:
+    if 'NN' in pos or 'JJ':
+        NN_words.append(word)
+        
+wlem = nltk.WordNetLemmatizer()
+lemmatized_words = []
+for word in NN_words:
+    new_word = wlem.lemmatize(word)
+    lemmatized_words.append(new_word)
+
+stopwords_list = stopwords.words('english') #nltk에서 제공하는 불용어사전 이용
+#print('stopwords: ', stopwords_list)
+unique_NN_words = set(lemmatized_words)
+final_NN_words = lemmatized_words
+
+# 불용어 제거
+for word in unique_NN_words:
+    if word in stopwords_list:
+        while word in final_NN_words: final_NN_words.remove(word)
+
+customized_stopwords = ['be', 'today', 'yesterday', "it’s", "don’t"] # 직접 만든 불용어 사전
+
+unique_NN_words1 = set(final_NN_words)
+for word in unique_NN_words1:
+    if word in customized_stopwords:
+        while word in final_NN_words: final_NN_words.remove(word)
+            
+from collections import Counter
+c = Counter(final_NN_words) # input type should be a list of words (or tokens)
+
+k = 20
+print(c.most_common(k)) # 빈도수 기준 상위 k개 단어 출력
+
