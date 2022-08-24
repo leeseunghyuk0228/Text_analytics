@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/ -->
+<html lang="" xml:lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>텍스트 자료 분석</title>
+  <meta name="description" content="텍스트 자료 분석">
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7">
+
+  <meta property="og:title" content="텍스트 자료 분석">
+  <meta property="og:type" content="book">
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="텍스트 자료 분석">
+  
+  
+  
+
+<meta name="author" content="김진석(jskim@dongguk.ac.kr)">
+
+
+<meta name="date" content="2021-11-04">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html">
+<script src="./텍스트 자료 분석_files/jquery-3.5.1.min.js"></script>
+<script src="./텍스트 자료 분석_files/fuse.min.js"></script>
+<link href="./텍스트 자료 분석_files/style.css" rel="stylesheet">
+<link href="./텍스트 자료 분석_files/plugin-table.css" rel="stylesheet">
+<link href="./텍스트 자료 분석_files/plugin-bookdown.css" rel="stylesheet">
+<link href="./텍스트 자료 분석_files/plugin-highlight.css" rel="stylesheet">
+<link href="./텍스트 자료 분석_files/plugin-search.css" rel="stylesheet">
+<link href="./텍스트 자료 분석_files/plugin-fontsettings.css" rel="stylesheet">
+<link href="./텍스트 자료 분석_files/plugin-clipboard.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<link href="./텍스트 자료 분석_files/anchor-sections.css" rel="stylesheet">
+<script src="./텍스트 자료 분석_files/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="./텍스트 자료 분석_files/style(1).css" type="text/css">
+<script type="text/javascript" src="./텍스트 자료 분석_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body><div id="MathJax_Message" style="display: none;"></div>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary"><div class="book-search" role="search"><label for="search-box" aria-hidden="false" hidden="hidden">Type to search</label><input id="search-box" type="search" class="form-control" placeholder="Type to search (Enter for navigation)" title="Use Enter or the &lt;Down&gt; key to navigate to the next match, or the &lt;Up&gt; key to the previous match"></div>
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/">텍스트자료처리및분석</a></li>
+
+<li class="divider"></li>
+<li class="chapter active" data-level="" data-path="index.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/index.html"><i class="fa fa-check"></i>과목소개</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/index.html#%EA%B0%9C%EC%9A%94"><i class="fa fa-check"></i>개요</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/index.html#%ED%95%99%EC%8A%B5%EB%AA%A9%ED%91%9C"><i class="fa fa-check"></i>학습목표</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/index.html#%ED%8F%89%EA%B0%80%EB%B0%A9%EB%B2%95"><i class="fa fa-check"></i>평가방법</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html"><i class="fa fa-check"></i><b>1</b> 텍스트자료 처리 및 분석 개요</a><ul>
+<li class="chapter" data-level="1.1" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D%EC%9D%98-%EB%B0%B0%EA%B2%BD"><i class="fa fa-check"></i><b>1.1</b> 텍스트 데이터 분석의 배경</a></li>
+<li class="chapter" data-level="1.2" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%B6%84%EC%84%9D%EC%97%90-%ED%95%84%EC%9A%94%ED%95%9C-%EC%A7%80%EC%8B%9D%EB%93%A4"><i class="fa fa-check"></i><b>1.2</b> 텍스트 분석에 필요한 지식들</a></li>
+<li class="chapter" data-level="1.3" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%B6%84%EC%84%9D%EC%9D%98-%EC%A2%85%EB%A5%98"><i class="fa fa-check"></i><b>1.3</b> 텍스트 분석의 종류</a></li>
+<li class="chapter" data-level="1.4" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EB%B6%84%EC%84%9D-%ED%98%84%ED%99%A9"><i class="fa fa-check"></i><b>1.4</b> 텍스트 자료 분석 현황</a><ul style="display: none;">
+<li class="chapter" data-level="1.4.1" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%EC%96%B8%EC%96%B4-%EA%B8%B0%EC%88%A0-%EB%A1%9C%EB%93%9C%EB%A7%B5"><i class="fa fa-check"></i><b>1.4.1</b> 언어 기술 로드맵</a></li>
+<li class="chapter" data-level="1.4.2" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%ED%99%9C%EC%9A%A9-%EB%B6%84%EC%95%BC"><i class="fa fa-check"></i><b>1.4.2</b> 활용 분야</a></li>
+<li class="chapter" data-level="1.4.3" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%EC%97%AD%EC%82%AC%EC%A0%81-%EB%B6%84%EC%84%9D"><i class="fa fa-check"></i><b>1.4.3</b> 역사적 분석</a></li>
+<li class="chapter" data-level="1.4.4" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%EB%A7%88%EC%BC%80%ED%8C%85"><i class="fa fa-check"></i><b>1.4.4</b> 마케팅</a></li>
+<li class="chapter" data-level="1.4.5" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%EB%B3%B4%EC%9D%B4%EC%8A%A4%ED%94%BC%EC%8B%B1-%ED%83%90%EC%A7%80"><i class="fa fa-check"></i><b>1.4.5</b> 보이스피싱 탐지</a></li>
+<li class="chapter" data-level="1.4.6" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%EC%8B%A0%EC%95%BD%EA%B0%9C%EB%B0%9C-%EB%AC%B8%ED%97%8C-%ED%83%90%EC%83%89"><i class="fa fa-check"></i><b>1.4.6</b> 신약개발 (문헌 탐색)</a></li>
+<li class="chapter" data-level="1.4.7" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%EC%BD%98%ED%85%90%EC%B8%A0-%EA%B0%9C%EB%B0%9C"><i class="fa fa-check"></i><b>1.4.7</b> 콘텐츠 개발</a></li>
+<li class="chapter" data-level="1.4.8" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%EC%97%85%EB%AC%B4-%EC%9E%90%EB%8F%99%ED%99%94"><i class="fa fa-check"></i><b>1.4.8</b> 업무 자동화</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%A7%88%EC%9D%B4%EB%8B%9D-%EA%B4%80%EB%A0%A8-%EC%B1%84%EC%9A%A9-%EB%8F%99%ED%96%A5"><i class="fa fa-check"></i><b>1.5</b> 텍스트마이닝 관련 채용 동향</a><ul style="display: none;">
+<li class="chapter" data-level="1.5.1" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%EC%A3%BC%EC%9A%94-%EC%97%85%EB%AC%B4"><i class="fa fa-check"></i><b>1.5.1</b> 주요 업무</a></li>
+<li class="chapter" data-level="1.5.2" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D"><i class="fa fa-check"></i><b>1.5.2</b> 기술 스택</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="텍스트자료-처리-및-분석-개요.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A7%88%EC%9D%B4%EB%8B%9D-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4"><i class="fa fa-check"></i><b>1.6</b> 텍스트 마이닝 프로세스</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="파이썬기초.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EA%B8%B0%EC%B4%88.html"><i class="fa fa-check"></i><b>2</b> 파이썬기초</a></li>
+<li class="chapter" data-level="3" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html"><i class="fa fa-check"></i><b>3</b> 텍스트 기초 핸들링</a><ul>
+<li class="chapter" data-level="3.1" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%B2%98%EB%A6%AC-%EB%B0%A9%EB%B2%95"><i class="fa fa-check"></i><b>3.1</b> 텍스트 데이터의 간단한 처리 방법</a></li>
+<li class="chapter" data-level="3.2" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html#%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%90%EC%84%9C-%ED%8C%A8%ED%84%B4-%ED%83%90%EC%83%89"><i class="fa fa-check"></i><b>3.2</b> 문자열에서 패턴 탐색</a></li>
+<li class="chapter" data-level="3.3" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html#%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%8C%A8%ED%84%B4-%EA%B2%80%EC%83%89"><i class="fa fa-check"></i><b>3.3</b> 정규표현식을 이용한 패턴 검색</a><ul style="display: none;">
+<li class="chapter" data-level="3.3.1" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html#%EB%A9%94%ED%83%80%EB%AC%B8%EC%9E%90-%EC%9B%90%EB%9E%98-%EA%B7%B8-%EB%AC%B8%EC%9E%90%EA%B0%80-%EA%B0%80%EC%A7%84-%EB%9C%BB%EC%9D%B4-%EC%95%84%EB%8B%8C-%ED%8A%B9%EB%B3%84%ED%95%9C-%EC%9A%A9%EB%8F%84%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%AC%B8%EC%9E%90%EB%A1%9C-%EC%95%84%EB%9E%98%EC%9D%98-%EA%B2%83%EB%93%A4"><i class="fa fa-check"></i><b>3.3.1</b> <strong>메타문자</strong>: 원래 그 문자가 가진 뜻이 아닌 특별한 용도로 사용하는 문자로 아래의 것들</a></li>
+<li class="chapter" data-level="3.3.2" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html#%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9Dregular-expression%EC%9D%98-%EB%AC%B8%EB%B2%95"><i class="fa fa-check"></i><b>3.3.2</b> 정규표현식(regular expression)의 문법</a></li>
+<li class="chapter" data-level="3.3.3" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html#%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%A0%9C"><i class="fa fa-check"></i><b>3.3.3</b> 정규식 예제</a></li>
+<li class="chapter" data-level="3.3.4" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html#%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9Dregular-expression%EC%9D%98-%ED%8A%B9%EC%88%98%EB%AC%B8%EC%9E%90-%ED%91%9C%ED%98%84"><i class="fa fa-check"></i><b>3.3.4</b> 정규표현식(regular expression)의 특수문자 표현</a></li>
+<li class="chapter" data-level="3.3.5" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html#re%ED%8C%A8%ED%82%A4%EC%A7%80"><i class="fa fa-check"></i><b>3.3.5</b> <code>re</code>패키지</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="텍스트-기초-핸들링.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B8%B0%EC%B4%88-%ED%95%B8%EB%93%A4%EB%A7%81.html#nltk%EC%99%80-konlpy-%ED%8C%A8%ED%82%A4%EC%A7%80"><i class="fa fa-check"></i><b>3.4</b> NLTK와 KoNLPy 패키지</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="텍스트-전처리.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC.html"><i class="fa fa-check"></i><b>4</b> 텍스트 전처리</a><ul>
+<li class="chapter" data-level="4.1" data-path="텍스트-전처리.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC.html#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC-steps"><i class="fa fa-check"></i><b>4.1</b> 텍스트 전처리 steps</a></li>
+<li class="chapter" data-level="4.2" data-path="텍스트-전처리.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC.html#%ED%86%A0%ED%81%B0%ED%99%94-tokenization"><i class="fa fa-check"></i><b>4.2</b> 토큰화 (Tokenization)</a></li>
+<li class="chapter" data-level="4.3" data-path="텍스트-전처리.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC.html#%EC%A0%95%EC%A0%9Ccleaning-and-%EC%A0%95%EA%B7%9C%ED%99%94normalization" title="4.3 정제(Cleaning) and 정규화(Normalization)"><i class="fa fa-check"></i><b>4.3</b> 정제(Cleaning) and 정규화(Normalization)</a><ul style="display: none;">
+<li class="chapter" data-level="4.3.1" data-path="텍스트-전처리.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC.html#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%95%EA%B7%9C%ED%99%94"><i class="fa fa-check"></i><b>4.3.1</b> 텍스트 정규화</a></li>
+<li class="chapter" data-level="4.3.2" data-path="텍스트-전처리.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC.html#%EB%B6%88%EC%9A%A9%EC%96%B4-%EB%B6%88%ED%95%84%EC%9A%94-%EB%8B%A8%EC%96%B4-%EC%A0%9C%EA%B1%B0"><i class="fa fa-check"></i><b>4.3.2</b> 불용어, 불필요 단어 제거</a></li>
+<li class="chapter" data-level="4.3.3" data-path="텍스트-전처리.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC.html#%EC%B2%A0%EC%9E%90%EC%88%98%EC%A0%95"><i class="fa fa-check"></i><b>4.3.3</b> 철자수정</a></li>
+<li class="chapter" data-level="4.3.4" data-path="텍스트-전처리.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC.html#%EC%96%B4%EA%B0%84%EC%B6%94%EC%B6%9C-stemming-%ED%91%9C%EC%A0%9C%EC%96%B4%EA%B8%B0%EB%B3%B8%ED%98%95-%EC%B6%94%EC%B6%9C-lemmatization"><i class="fa fa-check"></i><b>4.3.4</b> 어간추출 (Stemming), 표제어(기본형) 추출 (Lemmatization)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="텍스트-전처리.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%A0%84%EC%B2%98%EB%A6%AC.html#%ED%95%9C%EA%B5%AD%EC%96%B4-%EC%A0%84%EC%B2%98%EB%A6%AC"><i class="fa fa-check"></i><b>4.4</b> 한국어 전처리</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="언어-모델language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%96%B8%EC%96%B4-%EB%AA%A8%EB%8D%B8language-model.html"><i class="fa fa-check"></i><b>5</b> 언어 모델(Language Model)</a><ul>
+<li class="chapter" data-level="5.1" data-path="언어-모델language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%96%B8%EC%96%B4-%EB%AA%A8%EB%8D%B8language-model.html#%ED%99%95%EB%A5%A0%EA%B8%B0%EB%B0%98-%EC%96%B8%EC%96%B4-%EB%AA%A8%EB%8D%B8"><i class="fa fa-check"></i><b>5.1</b> 확률기반 언어 모델</a></li>
+<li class="chapter" data-level="5.2" data-path="언어-모델language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%96%B8%EC%96%B4-%EB%AA%A8%EB%8D%B8language-model.html#%ED%99%95%EB%A5%A0%EA%B8%B0%EB%B0%98%EB%AA%A8%EB%8D%B8%EC%97%90%EC%84%9C-%EC%A1%B0%EA%B1%B4%EB%B6%80-%ED%99%95%EB%A5%A0%EC%9D%98-%EC%B6%94%EC%A0%95"><i class="fa fa-check"></i><b>5.2</b> 확률기반모델에서 조건부 확률의 추정</a></li>
+<li class="chapter" data-level="5.3" data-path="언어-모델language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%96%B8%EC%96%B4-%EB%AA%A8%EB%8D%B8language-model.html#%EC%96%B8%EC%96%B4%EB%AA%A8%ED%98%95%EC%9D%98-%ED%8F%89%EA%B0%80"><i class="fa fa-check"></i><b>5.3</b> 언어모형의 평가</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="텍스트-자료의-표현-text-representation.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C%EC%9D%98-%ED%91%9C%ED%98%84-text-representation.html"><i class="fa fa-check"></i><b>6</b> 텍스트 자료의 표현 (Text representation)</a><ul>
+<li class="chapter" data-level="6.1" data-path="텍스트-자료의-표현-text-representation.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C%EC%9D%98-%ED%91%9C%ED%98%84-text-representation.html#%EB%8B%A8%EC%96%B4%EC%9D%98-%ED%91%9C%ED%98%84-%EB%B0%A9%EB%B2%95"><i class="fa fa-check"></i><b>6.1</b> 단어의 표현 방법</a></li>
+<li class="chapter" data-level="6.2" data-path="텍스트-자료의-표현-text-representation.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C%EC%9D%98-%ED%91%9C%ED%98%84-text-representation.html#%EB%AC%B8%EC%9E%A5%EB%AC%B8%EC%84%9C%EC%9D%98-%ED%91%9C%ED%98%84"><i class="fa fa-check"></i><b>6.2</b> 문장/문서의 표현</a><ul style="display: none;">
+<li class="chapter" data-level="6.2.1" data-path="텍스트-자료의-표현-text-representation.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C%EC%9D%98-%ED%91%9C%ED%98%84-text-representation.html#python%EC%97%90%EC%84%9C-bow-%EB%AA%A8%ED%98%95%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-dtm-%EB%A7%8C%EB%93%A4%EA%B8%B0"><i class="fa fa-check"></i><b>6.2.1</b> python에서 BoW 모형을 이용한 DTM 만들기</a></li>
+<li class="chapter" data-level="6.2.2" data-path="텍스트-자료의-표현-text-representation.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C%EC%9D%98-%ED%91%9C%ED%98%84-text-representation.html#%EB%B6%88%EC%9A%A9%EC%96%B4%EB%A5%BC-%EC%A0%9C%EA%B1%B0%ED%95%9C-%ED%9B%84-dtm-%EB%A7%8C%EB%93%A4%EA%B8%B0"><i class="fa fa-check"></i><b>6.2.2</b> 불용어를 제거한 후 DTM 만들기</a></li>
+<li class="chapter" data-level="6.2.3" data-path="텍스트-자료의-표현-text-representation.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C%EC%9D%98-%ED%91%9C%ED%98%84-text-representation.html#tf-idf"><i class="fa fa-check"></i><b>6.2.3</b> TF-IDF</a></li>
+<li class="chapter" data-level="6.2.4" data-path="텍스트-자료의-표현-text-representation.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C%EC%9D%98-%ED%91%9C%ED%98%84-text-representation.html#%ED%95%9C%EA%B8%80-%EC%B2%98%EB%A6%AC"><i class="fa fa-check"></i><b>6.2.4</b> 한글 처리</a></li>
+<li class="chapter" data-level="6.2.5" data-path="텍스트-자료의-표현-text-representation.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C%EC%9D%98-%ED%91%9C%ED%98%84-text-representation.html#%EB%AC%B8%EC%84%9C-%EC%9C%A0%EC%82%AC%EB%8F%84document-similarity"><i class="fa fa-check"></i><b>6.2.5</b> 문서 유사도(Document Similarity)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="분산표현.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%B6%84%EC%82%B0%ED%91%9C%ED%98%84.html"><i class="fa fa-check"></i><b>7</b> 텍스트자료의 분산표현 방법</a><ul>
+<li class="chapter" data-level="7.1" data-path="분산표현.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%B6%84%EC%82%B0%ED%91%9C%ED%98%84.html#%EC%9B%8C%EB%93%9C-%EC%9E%84%EB%B2%A0%EB%94%A9-word-embeding"><i class="fa fa-check"></i><b>7.1</b> 워드 임베딩 (word embeding)</a></li>
+<li class="chapter" data-level="7.2" data-path="분산표현.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%B6%84%EC%82%B0%ED%91%9C%ED%98%84.html#cbow-skip-gram"><i class="fa fa-check"></i><b>7.2</b> CBOW &amp; SKIP-GRAM</a></li>
+<li class="chapter" data-level="7.3" data-path="분산표현.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%B6%84%EC%82%B0%ED%91%9C%ED%98%84.html#python%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-word2vec-%ED%9B%88%EB%A0%A8"><i class="fa fa-check"></i><b>7.3</b> Python을 이용한 Word2Vec 훈련</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html"><i class="fa fa-check"></i><b>8</b> Text classification</a><ul>
+<li class="chapter" data-level="8.1" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80%EB%AA%A8%ED%98%95"><i class="fa fa-check"></i><b>8.1</b> 로지스틱 회귀모형</a><ul style="display: none;">
+<li class="chapter" data-level="8.1.1" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"><i class="fa fa-check"></i><b>8.1.1</b> 데이터 불러오기</a></li>
+<li class="chapter" data-level="8.1.2" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%ED%95%A0"><i class="fa fa-check"></i><b>8.1.2</b> 데이터 분할</a></li>
+<li class="chapter" data-level="8.1.3" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9E%AC%ED%91%9C%ED%98%84-%EB%AC%B8%EC%84%9C-%EB%8B%A8%EC%96%B4%ED%96%89%EB%A0%AC-%EB%B3%80%ED%99%98"><i class="fa fa-check"></i><b>8.1.3</b> 데이터 재표현: 문서-단어행렬 변환</a></li>
+<li class="chapter" data-level="8.1.4" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1%EB%AA%A8%ED%98%95-%EC%A0%81%ED%95%A9"><i class="fa fa-check"></i><b>8.1.4</b> 로지스틱모형 적합</a></li>
+<li class="chapter" data-level="8.1.5" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#%EC%84%B1%EB%8A%A5%ED%8F%89%EA%B0%80"><i class="fa fa-check"></i><b>8.1.5</b> 성능평가</a></li>
+<li class="chapter" data-level="8.1.6" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#%EC%98%88%EC%B8%A1"><i class="fa fa-check"></i><b>8.1.6</b> 예측</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#naive-bayes-%EB%AA%A8%ED%98%95"><i class="fa fa-check"></i><b>8.2</b> Naive Bayes 모형</a></li>
+<li class="chapter" data-level="8.3" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#%EC%84%9C%ED%8F%AC%ED%8A%B8%EB%B2%A1%ED%84%B0%EB%A8%B8%EC%8B%A0-support-vector-machine" title="8.3 서포트벡터머신 (Support Vector Machine)"><i class="fa fa-check"></i><b>8.3</b> 서포트벡터머신 (Support Vector Machine)</a></li>
+<li class="chapter" data-level="8.4" data-path="text-classification.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/text-classification.html#%EC%B1%84%EC%9A%A9%EA%B3%B5%EA%B3%A0-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%EB%B6%84%EB%A5%98%EB%AA%A8%ED%98%95-%EC%97%B0%EC%8A%B5" title="8.4 채용공고 데이터 로지스틱 분류모형 연습"><i class="fa fa-check"></i><b>8.4</b> 채용공고 데이터 로지스틱 분류모형 연습</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html"><i class="fa fa-check"></i><b>9</b> 웹크롤링을 이용한 텍스트 자료 수집</a><ul>
+<li class="chapter" data-level="9.1" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html#%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81"><i class="fa fa-check"></i><b>9.1</b> 웹크롤링</a></li>
+<li class="chapter" data-level="9.2" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html#python-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B0%8F-%EA%B8%B0%EB%8A%A5"><i class="fa fa-check"></i><b>9.2</b> Python 라이브러리 및 기능</a></li>
+<li class="chapter" data-level="9.3" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html#%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98"><i class="fa fa-check"></i><b>9.3</b> 패키지 설치</a></li>
+<li class="chapter" data-level="9.4" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html#requests%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%A0%95%EC%A0%81-%ED%81%AC%EB%A1%A4%EB%A7%81"><i class="fa fa-check"></i><b>9.4</b> <code>requests</code>를 이용한 정적 크롤링</a><ul style="display: none;">
+<li class="chapter" data-level="9.4.1" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html#set-the-url-and-connect-to-the-url"><i class="fa fa-check"></i><b>9.4.1</b> Set the URL and Connect to the URL</a></li>
+<li class="chapter" data-level="9.4.2" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html#parse-html-and-save-to-beautifulsoup-object"><i class="fa fa-check"></i><b>9.4.2</b> Parse HTML and save to BeautifulSoup object</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html#beautifulsoup-%ED%95%A8%EC%88%98-%EC%86%8C%EA%B0%9C"><i class="fa fa-check"></i><b>9.5</b> BeautifulSoup 함수 소개</a></li>
+<li class="chapter" data-level="9.6" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html#%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%98%81%ED%99%94%EB%A6%AC%EB%B7%B0-%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81"><i class="fa fa-check"></i><b>9.6</b> 네이버 영화리뷰 웹크롤링</a></li>
+<li class="chapter" data-level="9.7" data-path="웹크롤링을-이용한-텍스트-자료-수집.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%A7%81%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C-%EC%88%98%EC%A7%91.html#css-selector"><i class="fa fa-check"></i><b>9.7</b> CSS selector</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html"><i class="fa fa-check"></i><b>10</b> 뉴럴 language model</a><ul>
+<li class="chapter" data-level="10.1" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html#%ED%85%90%EC%84%9C-tensor"><i class="fa fa-check"></i><b>10.1</b> 텐서 (Tensor)</a></li>
+<li class="chapter" data-level="10.2" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html#%EC%8B%A0%EA%B2%BD%EB%A7%9D-%EB%AA%A8%ED%98%95"><i class="fa fa-check"></i><b>10.2</b> 신경망 모형</a><ul style="display: none;">
+<li class="chapter" data-level="10.2.1" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html#perceptron-%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0"><i class="fa fa-check"></i><b>10.2.1</b> Perceptron (퍼셉트론)</a></li>
+<li class="chapter" data-level="10.2.2" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html#multi-layer-perceptron-mlp-%EB%8B%A4%EC%B8%B5-%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0"><i class="fa fa-check"></i><b>10.2.2</b> Multi-layer Perceptron (MLP, 다층 퍼셉트론)</a></li>
+<li class="chapter" data-level="10.2.3" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html#%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%98-%EA%B5%AC%EC%84%B1-%EC%9A%94%EC%86%8C"><i class="fa fa-check"></i><b>10.2.3</b> 인공신경망의 구성 요소</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html#%EA%B3%BC%EC%A0%81%ED%95%A9%EA%B3%BC-%EB%8C%80%EC%95%88"><i class="fa fa-check"></i><b>10.3</b> 과적합과 대안</a></li>
+<li class="chapter" data-level="10.4" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html#python-keras%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9E%90%EB%A3%8C%EC%9D%98-%EB%B6%84%EB%A5%98" title="10.4 Python Keras를 이용한 텍스트 자료의 분류"><i class="fa fa-check"></i><b>10.4</b> Python Keras를 이용한 텍스트 자료의 분류</a></li>
+<li class="chapter" data-level="10.5" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html#%EB%8B%A4%EC%96%91%ED%95%9C-%ED%98%95%ED%83%9C%EC%9D%98-%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D"><i class="fa fa-check"></i><b>10.5</b> 다양한 형태의 인공신경망</a></li>
+<li class="chapter" data-level="10.6" data-path="뉴럴-language-model.html"><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%EB%89%B4%EB%9F%B4-language-model.html#%ED%8A%B9%EC%A7%95-feature-%EC%B6%94%EC%B6%9C-%EB%B0%A9%EB%B2%95"><i class="fa fa-check"></i><b>10.6</b> 특징 (feature) 추출 방법</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="http://bigdata.dongguk.ac.kr/" target="blank">강의 홈</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body fixed">
+      <div class="body-inner">
+        <div class="book-header fixed" role="navigation" style="background-color: rgb(255, 255, 255);">
+          <a class="btn pull-left js-toolbar-action" aria-label="Toggle Sidebar" title="Toggle Sidebar" href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="Search" title="Search" href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#"><i class="fa fa-search"></i></a><div class="dropdown pull-right js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" title="Share" href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">LinkedIn</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="Facebook" title="Facebook" href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="Twitter" title="Twitter" href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#"><i class="fa fa-twitter"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" title="Font Settings" href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><a class="btn pull-left js-toolbar-action" aria-label="PDF" title="PDF" href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#"><i class="fa fa-file-pdf-o"></i></a><a class="btn pull-left js-toolbar-action" aria-label="Information about the toolbar" title="Information about the toolbar" href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#"><i class="fa fa-info"></i></a><h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/">텍스트 자료 분석</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">텍스트 자료 분석</h1>
+<p class="author"><em>김진석(<a href="mailto:jskim@dongguk.ac.kr" class="email">jskim@dongguk.ac.kr</a>)</em></p>
+<p class="date"><em>2021-11-04</em></p>
+</div>
+<div id="과목소개" class="section level1 unnumbered">
+<h1 class="hasAnchor">과목소개<a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#%EA%B3%BC%EB%AA%A9%EC%86%8C%EA%B0%9C" class="anchor-section"></a></h1>
+<div id="개요" class="section level2 unnumbered">
+<h2 class="hasAnchor">개요<a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#%EA%B0%9C%EC%9A%94" class="anchor-section"></a></h2>
+<p>본 과정에서는 텍스트가 포함된 데이터의 처리 및 분석방법을 학습한다. 텍스트 자료의 처리 및 분석도구로는 Python을 주로 사용하며, R을 보조적으로 활용한다.</p>
+</div>
+<div id="학습목표" class="section level2 unnumbered">
+<h2 class="hasAnchor">학습목표<a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#%ED%95%99%EC%8A%B5%EB%AA%A9%ED%91%9C" class="anchor-section"></a></h2>
+<ul>
+<li>파이썬프로그램을 활용하여 텍스트 데이터를 조작, 처리할 수 있다.</li>
+<li>텍스트자료의 기본적인 분석방법을 이해하고, 파이썬을 이용하여 주어진 자료를 분석할 수 있다.</li>
+<li>텍스트 자료의 분류 및 군집방법을 이해하고 실제 데이터에 적용할 수 있다.</li>
+</ul>
+</div>
+<div id="평가방법" class="section level2 unnumbered">
+<h2 class="hasAnchor">평가방법<a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/#%ED%8F%89%EA%B0%80%EB%B0%A9%EB%B2%95" class="anchor-section"></a></h2>
+<ul>
+<li>중간고사 + 기말고사 (80%): 중간고사 및 기말고사는 개인과제 혹은 팀과제로 대체할 수 있음</li>
+<li>개별 과제(15%)</li>
+<li>출석(5)</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="http://bigdata.dongguk.ac.kr/lectures/TextMining/_book/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9E%90%EB%A3%8C-%EC%B2%98%EB%A6%AC-%EB%B0%8F-%EB%B6%84%EC%84%9D-%EA%B0%9C%EC%9A%94.html" class="navigation navigation-next navigation-unique" aria-label="Next page" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="./텍스트 자료 분석_files/app.min.js"></script>
+<script src="./텍스트 자료 분석_files/clipboard.min.js"></script>
+<script src="./텍스트 자료 분석_files/plugin-search.js"></script>
+<script src="./텍스트 자료 분석_files/plugin-sharing.js"></script>
+<script src="./텍스트 자료 분석_files/plugin-fontsettings.js"></script>
+<script src="./텍스트 자료 분석_files/plugin-bookdown.js"></script>
+<script src="./텍스트 자료 분석_files/jquery.highlight.js"></script>
+<script src="./텍스트 자료 분석_files/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["텍스트자료처리및분석.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+
+
+</body></html>
